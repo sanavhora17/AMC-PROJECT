@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { User, Mail, Phone, MapPin, Save, ShieldCheck, CreditCard, Calendar, CheckCircle } from 'lucide-react';
@@ -24,11 +25,11 @@ const Profile = () => {
             }
             try {
                 // 1. Fetch User Profile
-                const userRes = await axios.get(`http://localhost:5000/api/users/${userId}`);
+                const userRes = await axios.get(`${API_URL}/api/users/${userId}`);
                 setFormData(userRes.data);
 
                 // 2. Fetch Active Plan (Booking History se latest uthayenge)
-                const planRes = await axios.get(`http://localhost:5000/api/admin/payments/history`);
+                const planRes = await axios.get(`${API_URL}/api/admin/payments/history`);
                 const userPlan = planRes.data.data.find(p => p.userId === userId);
                 if (userPlan) {
                     setActivePlan(userPlan);
@@ -47,7 +48,7 @@ const Profile = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:5000/api/users/update/${userId}`, formData);
+            await axios.put(`${API_URL}/api/users/update/${userId}`, formData);
             alert("Profile Updated Successfully!");
         } catch (err) {
             alert("Update failed!");

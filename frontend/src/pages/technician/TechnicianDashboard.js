@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
@@ -22,7 +23,7 @@ const TechnicianDashboard = () => {
     const fetchTasks = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:5000/api/technicians/tasks/${tech._id}`);
+            const res = await axios.get(`${API_URL}/api/technicians/tasks/${tech._id}`);
             const data = Array.isArray(res.data) ? res.data : [];
             setTasks(data);
             generateNotifications(data);
@@ -74,7 +75,7 @@ const TechnicianDashboard = () => {
         setCompleting(id);
         try {
             await axios.patch(
-                `http://localhost:5000/api/technicians/tasks/update-status/${id}`,
+                `${API_URL}/api/technicians/tasks/update-status/${id}`,
                 { status: 'Completed' } // ✅ Enum match: 'Completed'
             );
             setNotifications(prev => prev.filter(n => n.id !== id));

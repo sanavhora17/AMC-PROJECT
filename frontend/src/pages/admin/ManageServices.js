@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { Plus, Trash2, Settings, PenLine, Save, X, Layers, Image as ImageIcon } from 'lucide-react';
 import axios from 'axios';
@@ -11,7 +12,7 @@ const ManageServices = () => {
 
     const fetchServices = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/services/all');
+            const res = await axios.get('${API_URL}/api/services/all');
             setServices(res.data);
         } catch (err) {
             console.error("Error fetching services:", err);
@@ -28,9 +29,9 @@ const ManageServices = () => {
 
         try {
             if (editingId) {
-                await axios.put(`http://localhost:5000/api/services/${editingId}`, serviceForm);
+                await axios.put(`${API_URL}/api/services/${editingId}`, serviceForm);
             } else {
-                await axios.post('http://localhost:5000/api/services/add', serviceForm);
+                await axios.post('${API_URL}/api/services/add', serviceForm);
             }
             fetchServices();
             resetForm();
@@ -43,7 +44,7 @@ const ManageServices = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Permanent Delete? This will reflect on Customer Site too.")) {
             try {
-                await axios.delete(`http://localhost:5000/api/services/${id}`);
+                await axios.delete(`${API_URL}/api/services/${id}`);
                 fetchServices();
             } catch (err) {
                 console.error("Error deleting service:", err);

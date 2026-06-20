@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { Trash2, Mail, Phone, Calendar, Search, UserCheck, ShieldCheck, Zap, Crown } from 'lucide-react';
 import axios from 'axios';
@@ -9,7 +10,7 @@ const UserList = () => {
 
     const fetchUsers = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/users/all'); 
+            const res = await axios.get('${API_URL}/api/users/all'); 
             setUsers(res.data);
             setLoading(false);
         } catch (err) {
@@ -25,7 +26,7 @@ const UserList = () => {
     const deleteUser = async (id) => {
         if(window.confirm("Delete this user record?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/users/${id}`);
+                await axios.delete(`${API_URL}/api/users/${id}`);
                 setUsers(users.filter(u => u._id !== id));
             } catch (err) {
                 alert("Error deleting user");

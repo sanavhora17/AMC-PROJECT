@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, UserPlus, Filter } from 'lucide-react';
 import axios from 'axios';
@@ -9,8 +10,8 @@ const ServiceRequest = () => {
     const fetchData = async () => {
         try {
             // Frontend 3000 par chalta hai, Backend 5000 par. Isliye 5000 use kiya hai.
-            const resReq = await axios.get('http://localhost:5000/api/requests/all');
-            const resTech = await axios.get('http://localhost:5000/api/technicians');
+            const resReq = await axios.get('${API_URL}/api/requests/all');
+            const resTech = await axios.get('${API_URL}/api/technicians');
             setRequests(resReq.data);
             setTechnicians(resTech.data);
         } catch (err) {
@@ -24,7 +25,7 @@ const ServiceRequest = () => {
 
     const updateStatus = async (id, newStatus) => {
         try {
-            await axios.put(`http://localhost:5000/api/requests/update-status/${id}`, { status: newStatus });
+            await axios.put(`${API_URL}/api/requests/update-status/${id}`, { status: newStatus });
             fetchData();
         } catch (err) {
             alert("Status update failed!");
@@ -35,7 +36,7 @@ const ServiceRequest = () => {
         if (!techId) return;
         const selectedTech = technicians.find(t => t._id === techId);
         try {
-            await axios.patch(`http://localhost:5000/api/requests/assign/${requestId}`, {
+            await axios.patch(`${API_URL}/api/requests/assign/${requestId}`, {
                 technicianId: techId,
                 technicianName: selectedTech.name
             });

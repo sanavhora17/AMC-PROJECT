@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UserPlus, Trash2 } from 'lucide-react';
@@ -9,7 +10,7 @@ const ManageTechnicians = () => {
   
   const fetchTechs = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/technicians');
+      const res = await axios.get('${API_URL}/api/technicians');
       setTechnicians(res.data);
     } catch (err) {
       console.error("Error fetching technicians");
@@ -24,7 +25,7 @@ const ManageTechnicians = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/technicians/register', formData);
+      await axios.post('${API_URL}/api/technicians/register', formData);
       alert("Technician Added Successfully!");
       setFormData({ name: '', email: '', specialization: '', phone: '' });
       fetchTechs();
@@ -37,7 +38,7 @@ const ManageTechnicians = () => {
   const deleteTech = async (id) => {
     if (window.confirm("Are you sure?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/technicians/${id}`);
+        await axios.delete(`${API_URL}/api/technicians/${id}`);
         fetchTechs();
       } catch (err) {
         alert("Delete failed");

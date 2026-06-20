@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, QrCode, CreditCard, Landmark, CheckCircle2, ChevronRight, Lock, ScanLine, X } from 'lucide-react';
@@ -30,7 +31,7 @@ const Payment = () => {
 
     const fetchUser = async (userId) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/users/${userId}`);
+            const res = await axios.get(`${API_URL}/api/users/${userId}`);
             setUser(res.data);
         } catch (err) {
             console.error('User fetch error', err);
@@ -69,10 +70,10 @@ const Payment = () => {
 
         try {
             // ✅ Step 1 — Booking save karo
-            await axios.post('http://localhost:5000/api/bookings/add', paymentData);
+            await axios.post('${API_URL}/api/bookings/add', paymentData);
 
             // ✅ Step 2 — Contract create karo taaki Active plan dike
-            await axios.post('http://localhost:5000/api/contracts/buy', {
+            await axios.post('${API_URL}/api/contracts/buy', {
                 userId: user._id,
                 planName: plan.name,
                 durationMonths: 12,

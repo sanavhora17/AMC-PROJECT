@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -23,7 +24,7 @@ const AdminLogin = () => {
         setLoading(true);
         setError('');
         try {
-            const res = await axios.post('http://localhost:5000/api/admin/login', { email, password });
+            const res = await axios.post('${API_URL}/api/admin/login', { email, password });
             if (res.data.success) {
                 localStorage.setItem('isAdminLoggedIn', 'true');
                 localStorage.setItem('currentUser', JSON.stringify(res.data.admin));
@@ -45,7 +46,7 @@ const AdminLogin = () => {
         setResetLoading(true);
         try {
             // Backend API for Reset Password
-            const res = await axios.post('http://localhost:5000/api/admin/reset-password', { 
+            const res = await axios.post('${API_URL}/api/admin/reset-password', { 
                 email: forgotEmail, 
                 newPassword 
             });

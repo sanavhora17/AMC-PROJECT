@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Search, CheckCircle, Clock, RefreshCw, CreditCard, Landmark, QrCode, User, AlertCircle } from 'lucide-react';
@@ -12,7 +13,7 @@ const AdminPaymentHistory = () => {
         setLoading(true);
         setError(null);
         try {
-            const res = await axios.get('http://localhost:5000/api/admin/payments/history');
+            const res = await axios.get('${API_URL}/api/admin/payments/history');
             if (res.data.success) {
                 setPayments(res.data.data);
             }

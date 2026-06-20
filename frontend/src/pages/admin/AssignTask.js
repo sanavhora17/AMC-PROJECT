@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UserPlus, CheckCircle2, Clock, RefreshCw, AlertCircle } from 'lucide-react';
@@ -15,8 +16,8 @@ const AssignTask = () => {
         setLoading(true);
         try {
             const [resReq, resTech] = await Promise.all([
-                axios.get('http://localhost:5000/api/requests/all'),
-                axios.get('http://localhost:5000/api/technicians'),
+                axios.get('${API_URL}/api/requests/all'),
+                axios.get('${API_URL}/api/technicians'),
             ]);
             setRequests(Array.isArray(resReq.data) ? resReq.data : []);
             setTechnicians(Array.isArray(resTech.data) ? resTech.data : []);
@@ -33,7 +34,7 @@ const AssignTask = () => {
         const selectedTech = technicians.find(t => t._id === techId);
         setAssigning(requestId);
         try {
-            await axios.patch(`http://localhost:5000/api/requests/assign/${requestId}`, {
+            await axios.patch(`${API_URL}/api/requests/assign/${requestId}`, {
                 technicianId: techId,
                 technicianName: selectedTech.name,
             });

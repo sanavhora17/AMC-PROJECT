@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import {
     BarChart3, TrendingUp, Download, AlertCircle,
@@ -27,7 +28,7 @@ const ReportAnalysis = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/admin/contracts');
+                const res = await axios.get('${API_URL}/api/admin/contracts');
                 const liveData = Array.isArray(res.data) ? res.data : [];
 
                 // ✅ Real + Dummy merge

@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Wrench, Send, ArrowLeft, AlertCircle, CheckCircle2 } from 'lucide-react';
@@ -29,7 +30,7 @@ const CustomerServicePage = () => {
     // ✅ Backend se user fetch
     const fetchUser = async (userId) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/users/${userId}`);
+            const res = await axios.get(`${API_URL}/api/users/${userId}`);
             setUser(res.data);
             checkPayment(res.data.email);
         } catch (err) {
@@ -41,7 +42,7 @@ const CustomerServicePage = () => {
     // ✅ Backend se payment check
     const checkPayment = async (email) => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/bookings/check/${email}`);
+            const res = await axios.get(`${API_URL}/api/bookings/check/${email}`);
             setPaymentDone(res.data.paid === true);
         } catch (err) {
             setPaymentDone(false);
@@ -72,7 +73,7 @@ const CustomerServicePage = () => {
         };
 
         try {
-            await axios.post('http://localhost:5000/api/requests/add', requestData);
+            await axios.post('${API_URL}/api/requests/add', requestData);
             setSubmitting(false);
             alert('✅ Service Request successfully submitted! Admin will review shortly.');
             navigate('/customer/dashboard');

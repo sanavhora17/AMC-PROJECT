@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { Plus, Pencil, Trash2, X, Check, ShieldCheck, Crown, Zap } from 'lucide-react';
 import axios from 'axios'; 
@@ -17,7 +18,7 @@ const ManagePlans = () => {
 
     const fetchPlans = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/api/plans/all');
+            const res = await axios.get('${API_URL}/api/plans/all');
             setPlans(res.data);
         } catch (err) {
             console.error("Error fetching plans:", err);
@@ -54,10 +55,10 @@ const ManagePlans = () => {
             };
 
             if (editingPlan) {
-                await axios.put(`http://localhost:5000/api/plans/${editingPlan._id}`, planData);
+                await axios.put(`${API_URL}/api/plans/${editingPlan._id}`, planData);
                 alert("Plan updated!");
             } else {
-                await axios.post('http://localhost:5000/api/plans/add', planData);
+                await axios.post('${API_URL}/api/plans/add', planData);
                 alert("Plan created!");
             }
             
@@ -72,7 +73,7 @@ const ManagePlans = () => {
     const handleDelete = async (id) => {
         if (window.confirm("Delete this plan permanently?")) {
             try {
-                await axios.delete(`http://localhost:5000/api/plans/${id}`);
+                await axios.delete(`${API_URL}/api/plans/${id}`);
                 fetchPlans(); 
             } catch (err) {
                 console.error("Delete error:", err);

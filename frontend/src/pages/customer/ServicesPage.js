@@ -1,3 +1,4 @@
+import API_URL from "../../config";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, CheckCircle2, Settings, Sparkles } from 'lucide-react';
@@ -10,7 +11,7 @@ const ServicesPage = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/services/all');
+                const res = await axios.get('${API_URL}/api/services/all');
                 setServices(res.data);
             } catch (err) {
                 console.error("Error fetching services:", err);
