@@ -16,8 +16,8 @@ const AssignTask = () => {
         setLoading(true);
         try {
             const [resReq, resTech] = await Promise.all([
-                axios.get('${API_URL}/api/requests/all'),
-                axios.get('${API_URL}/api/technicians'),
+                axios.get(`${API_URL}/api/requests/all`),
+                axios.get(`${API_URL}/api/technicians`),
             ]);
             setRequests(Array.isArray(resReq.data) ? resReq.data : []);
             setTechnicians(Array.isArray(resTech.data) ? resTech.data : []);

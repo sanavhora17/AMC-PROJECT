@@ -10,7 +10,7 @@ const ManageTechnicians = () => {
   
   const fetchTechs = async () => {
     try {
-      const res = await axios.get('${API_URL}/api/technicians');
+      const res = await axios.get(`${API_URL}/api/technicians`);
       setTechnicians(res.data);
     } catch (err) {
       console.error("Error fetching technicians");
@@ -25,7 +25,7 @@ const ManageTechnicians = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('${API_URL}/api/technicians/register', formData);
+      await axios.post(`${API_URL}/api/technicians/register`, formData);
       alert("Technician Added Successfully!");
       setFormData({ name: '', email: '', specialization: '', phone: '' });
       fetchTechs();

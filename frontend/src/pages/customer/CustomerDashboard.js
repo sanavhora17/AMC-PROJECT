@@ -37,7 +37,7 @@ const CustomerDashboard = () => {
     // ✅ Backend se requests fetch
     const fetchMyRequests = async (email) => {
         try {
-            const res = await axios.get('${API_URL}/api/requests/all');
+            const res = await axios.get(`${API_URL}/api/requests/all`);
             const filtered = res.data.filter(req => req.customerEmail === email);
             setMyRequests(filtered);
         } catch (err) {

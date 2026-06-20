@@ -70,10 +70,10 @@ const Payment = () => {
 
         try {
             // ✅ Step 1 — Booking save karo
-            await axios.post('${API_URL}/api/bookings/add', paymentData);
+            await axios.post(`${API_URL}/api/bookings/add`, paymentData);
 
             // ✅ Step 2 — Contract create karo taaki Active plan dike
-            await axios.post('${API_URL}/api/contracts/buy', {
+            await axios.post(`${API_URL}/api/contracts/buy`, {
                 userId: user._id,
                 planName: plan.name,
                 durationMonths: 12,

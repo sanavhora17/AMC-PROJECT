@@ -12,7 +12,7 @@ const ManageServices = () => {
 
     const fetchServices = async () => {
         try {
-            const res = await axios.get('${API_URL}/api/services/all');
+            const res = await axios.get(`${API_URL}/api/services/all`);
             setServices(res.data);
         } catch (err) {
             console.error("Error fetching services:", err);
@@ -31,7 +31,7 @@ const ManageServices = () => {
             if (editingId) {
                 await axios.put(`${API_URL}/api/services/${editingId}`, serviceForm);
             } else {
-                await axios.post('${API_URL}/api/services/add', serviceForm);
+                await axios.post(`${API_URL}/api/services/add`, serviceForm);
             }
             fetchServices();
             resetForm();

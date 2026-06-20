@@ -11,7 +11,7 @@ const ServicesPage = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const res = await axios.get('${API_URL}/api/services/all');
+                const res = await axios.get(`${API_URL}/api/services/all`);
                 setServices(res.data);
             } catch (err) {
                 console.error("Error fetching services:", err);

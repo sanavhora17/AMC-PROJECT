@@ -22,7 +22,7 @@ const CustomerLogin = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('${API_URL}/api/users/login', { email, password });
+            const response = await axios.post(`${API_URL}/api/users/login`, { email, password });
             if (response.data.user) {
                 localStorage.setItem('userId', response.data.user._id);
                 alert(`Welcome back, ${response.data.user.name}! 👋`);
@@ -41,7 +41,7 @@ const CustomerLogin = () => {
         }
         setResetLoading(true);
         try {
-            const res = await axios.post('${API_URL}/api/users/reset-password', {
+            const res = await axios.post(`${API_URL}/api/users/reset-password`, {
                 email: forgotEmail,
                 newPassword
             });

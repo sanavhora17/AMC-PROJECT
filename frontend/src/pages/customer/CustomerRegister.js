@@ -20,7 +20,7 @@ const CustomerRegister = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('${API_URL}/api/users/register', formData);
+            const response = await axios.post(`${API_URL}/api/users/register`, formData);
             if (response.status === 201) {
                 alert("Registration Successful! Now you can Login.");
                 navigate('/login');

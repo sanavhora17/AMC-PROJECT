@@ -14,7 +14,7 @@ const CustomerPlans = () => {
         const fetchPlans = async () => {
             try {
                 // URL check karein: Kya apka backend port 5000 hai?
-                const res = await axios.get('${API_URL}/api/plans/all');
+                const res = await axios.get(`${API_URL}/api/plans/all`);
                 setPlans(res.data);
                 setLoading(false);
             } catch (err) {

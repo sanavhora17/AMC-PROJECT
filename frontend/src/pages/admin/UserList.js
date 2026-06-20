@@ -10,7 +10,7 @@ const UserList = () => {
 
     const fetchUsers = async () => {
         try {
-            const res = await axios.get('${API_URL}/api/users/all'); 
+            const res = await axios.get(`${API_URL}/api/users/all`); 
             setUsers(res.data);
             setLoading(false);
         } catch (err) {

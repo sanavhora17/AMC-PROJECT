@@ -73,7 +73,7 @@ const CustomerServicePage = () => {
         };
 
         try {
-            await axios.post('${API_URL}/api/requests/add', requestData);
+            await axios.post(`${API_URL}/api/requests/add`, requestData);
             setSubmitting(false);
             alert('✅ Service Request successfully submitted! Admin will review shortly.');
             navigate('/customer/dashboard');

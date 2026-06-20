@@ -10,8 +10,8 @@ const ServiceRequest = () => {
     const fetchData = async () => {
         try {
             // Frontend 3000 par chalta hai, Backend 5000 par. Isliye 5000 use kiya hai.
-            const resReq = await axios.get('${API_URL}/api/requests/all');
-            const resTech = await axios.get('${API_URL}/api/technicians');
+            const resReq = await axios.get(`${API_URL}/api/requests/all`);
+            const resTech = await axios.get(`${API_URL}/api/technicians`);
             setRequests(resReq.data);
             setTechnicians(resTech.data);
         } catch (err) {

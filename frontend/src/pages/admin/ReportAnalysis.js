@@ -28,7 +28,7 @@ const ReportAnalysis = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await axios.get('${API_URL}/api/admin/contracts');
+                const res = await axios.get(`${API_URL}/api/admin/contracts`);
                 const liveData = Array.isArray(res.data) ? res.data : [];
 
                 // ✅ Real + Dummy merge

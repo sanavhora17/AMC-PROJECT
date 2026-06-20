@@ -24,7 +24,7 @@ const TechnicianLogin = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await axios.post('${API_URL}/api/technicians/login', { email });
+            const res = await axios.post(`${API_URL}/api/technicians/login`, { email });
             if (res.data) {
                 localStorage.setItem('techInfo', JSON.stringify(res.data));
                 navigate('/technician/dashboard');
@@ -44,7 +44,7 @@ const TechnicianLogin = () => {
         }
         setResetLoading(true);
         try {
-            const res = await axios.post('${API_URL}/api/technicians/reset-password', {
+            const res = await axios.post(`${API_URL}/api/technicians/reset-password`, {
                 email: forgotEmail,
                 newPassword
             });

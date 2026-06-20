@@ -18,7 +18,7 @@ const ManagePlans = () => {
 
     const fetchPlans = async () => {
         try {
-            const res = await axios.get('${API_URL}/api/plans/all');
+            const res = await axios.get(`${API_URL}/api/plans/all`);
             setPlans(res.data);
         } catch (err) {
             console.error("Error fetching plans:", err);
@@ -58,7 +58,7 @@ const ManagePlans = () => {
                 await axios.put(`${API_URL}/api/plans/${editingPlan._id}`, planData);
                 alert("Plan updated!");
             } else {
-                await axios.post('${API_URL}/api/plans/add', planData);
+                await axios.post(`${API_URL}/api/plans/add`, planData);
                 alert("Plan created!");
             }
             

@@ -7,7 +7,7 @@ import {
     IndianRupee, FileText, Bell, Wrench
 } from 'lucide-react';
 
-const API_BASE = '${API_URL}/api';
+const API_BASE = `${API_URL}/api`;
 
 const DUMMY_CONTRACTS = [
     { _id: 'dx1', userId: { name: 'Ramesh Gupta', _id: 'du1' }, price: 4999, expiryDate: new Date(Date.now() - 45 * 86400000).toISOString(), planName: 'Gold Plan', calculatedStatus: 'Expired' },
