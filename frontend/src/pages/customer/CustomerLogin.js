@@ -1,4 +1,4 @@
-import API_URL from "../../config";
+import { API_URL } from "../../config";
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, ArrowRight, ShieldCheck, X, Eye, EyeOff } from 'lucide-react';

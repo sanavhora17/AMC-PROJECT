@@ -1,4 +1,4 @@
-import API_URL from "../../config";
+import { API_URL } from "../../config";
 import React, { useState, useEffect } from 'react';
 import {
     BarChart3, TrendingUp, Download, AlertCircle,

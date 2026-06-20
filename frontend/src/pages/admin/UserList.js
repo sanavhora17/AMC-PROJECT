@@ -1,4 +1,4 @@
-import API_URL from "../../config";
+import { API_URL } from "../../config";
 import React, { useState, useEffect } from 'react';
 import { Trash2, Mail, Phone, Calendar, Search, UserCheck, ShieldCheck, Zap, Crown } from 'lucide-react';
 import axios from 'axios';

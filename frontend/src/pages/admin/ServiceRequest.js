@@ -1,4 +1,4 @@
-import API_URL from "../../config";
+import { API_URL } from "../../config";
 import React, { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, UserPlus, Filter } from 'lucide-react';
 import axios from 'axios';

@@ -1,4 +1,4 @@
-import API_URL from "../../config";
+import { API_URL } from "../../config";
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, QrCode, CreditCard, Landmark, CheckCircle2, ChevronRight, Lock, ScanLine, X } from 'lucide-react';

@@ -1,4 +1,4 @@
-import API_URL from "../../config";
+import { API_URL } from "../../config";
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import {
